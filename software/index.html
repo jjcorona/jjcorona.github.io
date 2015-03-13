@@ -1,0 +1,29 @@
+---
+layout: default
+title: Software
+---
+{% assign j = 0 %}
+{% assign pages = site.pages | sort: 'date' %}
+{% for page in pages reversed%}
+	{% if page.category %}
+		{% if page.category == 'software' %}
+			{% if j > 0 %}
+			<hr />
+			{% endif %}
+			{%  assign j = j | plus: 1 %}
+			<div class="row">
+	    		<div class="col-md-7">
+		        	<a href="{{page.url}}">
+		            <img class="img-responsive" src="../assets/{{ page.asset }}.jpg" alt="">
+		        	</a>
+	    		</div>
+			    <div class="col-md-5">
+			        <h3>{{ page.title }}</h3>
+			        <h4>{{ page.languages }}</h4>
+			        <p>{{ page.description }}</p>
+			    </div>
+			</div>
+			
+		{% endif %}
+	{% endif %}
+{% endfor %}
